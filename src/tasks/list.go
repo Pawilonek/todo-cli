@@ -1,7 +1,7 @@
 package tasks
 
 type List struct {
-    tasks []Task
+	tasks []Task
 }
 
 func NewList() List {
