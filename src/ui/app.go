@@ -1,9 +1,11 @@
 package ui
 
 import (
-	"github.com/Pawilonek/nozbe-cli/tasks"
 	"github.com/gdamore/tcell"
 	"github.com/rivo/tview"
+
+    "github.com/Pawilonek/nozbe-cli/tasks"
+    "github.com/Pawilonek/nozbe-cli/storage"
 )
 
 type TaskBox struct {
@@ -83,6 +85,13 @@ func Main() {
 	list.Add("asdfdf")
 	list.Add("asdfasdfasdf")
 	list.Add("I have a dream!")
+
+    storage := storage.NewDisk("storage.json")
+    // storage.SaveTasks(list)
+    list, err := storage.LoadTasks()
+    if err != nil {
+        panic(err)
+    }
 
 	tbox := TaskBox{
         Table: tview.NewTable(),

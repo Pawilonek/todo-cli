@@ -10,6 +10,12 @@ func NewList() List {
 	}
 }
 
+func FromStorage(tasks []Task) List {
+    return List{
+        tasks: tasks,
+    }
+}
+
 func (list *List) Add(name string) {
 	list.tasks = append(list.tasks, Task{
 		Name: name,
