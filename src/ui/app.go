@@ -38,7 +38,7 @@ func (task *TaskBox) Draw(screen tcell.Screen) {
 		tcCheck := tview.NewTableCell(checkIcon)
 		task.Table.SetCell(i, 0, tcCheck)
 
-		tcName := tview.NewTableCell(t.Name).SetTextColor(textColor)
+		tcName := tview.NewTableCell(t.Name).SetTextColor(textColor).SetExpansion(1)
 		task.Table.SetCell(i, 1, tcName)
 	}
 
@@ -85,7 +85,7 @@ func Main() {
 	list.Add("I have a dream!")
 
 	tbox := TaskBox{
-		Table: tview.NewTable(),
+        Table: tview.NewTable(),
 		List:  &list,
 	}
 
