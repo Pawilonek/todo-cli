@@ -78,20 +78,15 @@ func (task *TaskBox) Draw(screen tcell.Screen) {
 func Main() {
 	app := tview.NewApplication()
 
-	list := tasks.NewList()
-	list.Add("test 1")
-	list.Add("test 3")
-	list.Add("a")
-	list.Add("asdfdf")
-	list.Add("asdfasdfasdf")
-	list.Add("I have a dream!")
-
     storage := storage.NewDisk("storage.json")
-    // storage.SaveTasks(list)
     list, err := storage.LoadTasks()
     if err != nil {
         panic(err)
     }
+
+    defer func() {
+        storage.SaveTasks(list)
+    }()
 
 	tbox := TaskBox{
         Table: tview.NewTable(),
