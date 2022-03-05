@@ -1,8 +1,8 @@
 
 
 build:
-	@cd src; go build -o ../bin/nozbe-cli
+	@cd src; go build -o ../bin/todo-cli
 
 run: build
-	@./bin/nozbe-cli
+	@./bin/todo-cli
 
